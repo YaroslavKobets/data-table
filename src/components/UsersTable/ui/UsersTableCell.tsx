@@ -65,7 +65,7 @@ export function UsersTableCell({
 		<td
 			className={clsx(
 				'border-b border-stroke border-l first:shadow-[0_1px_0_1px_stroke] min-w-max py-3 px-2 whitespace-nowrap h-14',
-				index === 0 && 'sticky left-0 bg-white border-l-0'
+				index === 0 && 'sticky left-0 bg-white border-l-0 min-w-[180px]'
 			)}
 		>
 			{cellContent()}

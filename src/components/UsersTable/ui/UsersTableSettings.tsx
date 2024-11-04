@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { UiTextField } from '../../UI'
 import { useClickOutside } from '../../../hooks'
 
@@ -24,7 +24,13 @@ export function UsersTableSettings({
 }: UsersTableSettingsProps) {
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const [searchQuery, setSearchQuery] = useState<string>('')
-	const settingsRef = useClickOutside(isOpen, setIsOpen)
+
+	const buttonRef = useRef<HTMLButtonElement | null>(null)
+	const settingsRef = useClickOutside(isOpen, setIsOpen, buttonRef)
+
+	const toggleDropdown = () => {
+		setIsOpen(prev => !prev)
+	}
 
 	const sortedColumns = [...columns].sort((a, b) => {
 		if (a.lock && !b.lock) return -1
@@ -35,8 +41,9 @@ export function UsersTableSettings({
 	return (
 		<div className={clsx(className, 'z-10 h-full flex -ml-9')}>
 			<button
+				ref={buttonRef}
 				className='min-w-9 px-2 py-1 border-l bg-bgprimary'
-				onClick={() => setIsOpen(!isOpen)}
+				onClick={toggleDropdown}
 				aria-label='Table Settings'
 			>
 				<img className='w-4 h-4' src='./icons/gear.svg' alt='' />

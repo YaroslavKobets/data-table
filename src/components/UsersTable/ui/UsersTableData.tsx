@@ -32,7 +32,7 @@ export function UsersTableData({
 							key={`${String(column.header)}-${index}`}
 							className={clsx(
 								'w-full bg-bgprimary whitespace-nowrap px-2 py-[6px] text-10 leading-12 text-tsecondary uppercase font-semibold tracking-wide text-left border-stroke border-l last:pr-9',
-								index === 0 && 'sticky left-0 z-20 border-l-0',
+								index === 0 && 'sticky left-0 z-20 border-l-0 min-w-[180px]',
 								columns.at(-2) && 'pr-11'
 							)}
 						>
