@@ -9,7 +9,20 @@ export const getNestedValue = (obj: NestedValue, path: string[]): any => {
 }
 
 export const formatBirthday = (birthDate: string): string => {
-	const date = new Date(birthDate)
+	const parts = birthDate.split('-')
+
+	const year = parts[0]
+	const month = String(parts[1].padStart(2, '0'))
+	const day = String(parts[2].padStart(2, '0'))
+
+	const formattedBirthDate = `${year}-${month}-${day}`
+
+	const date = new Date(formattedBirthDate)
+
+	if (isNaN(date.getTime())) {
+		console.error(`Invalid date format: ${birthDate}`)
+		return 'Invalid date'
+	}
 
 	const formattedDate = `${String(date.getDate()).padStart(2, '0')}.${String(
 		date.getMonth() + 1
