@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--tprimary: #202932;
+	--tsecondary: #5f6e7c;
+	--terror: #e40808;
+	--accent: #005cb2;
+	--stroke: #eaedf0;
+	--bgprimary: #f7f7f8;
+	--icon: #687684;
+	--done: #d2ffce;
+	--wrong: #fedbdb;
+	--alert: #fef0db;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type='number'] {
+	text-align: center;
+	-moz-appearance: textfield;
+}
