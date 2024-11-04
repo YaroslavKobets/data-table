@@ -38,11 +38,11 @@ export const formatGender = (gender: GenderType): GenderInfo | 'N/A' => {
 	const genderIcons: Record<GenderType, GenderInfo> = {
 		[GENDER.MALE]: {
 			label: 'Male',
-			icon: '/icons/male.svg',
+			icon: './icons/male.svg',
 		},
 		[GENDER.FEMALE]: {
 			label: 'Female',
-			icon: '/icons/female.svg',
+			icon: './icons/female.svg',
 		},
 	}
 
