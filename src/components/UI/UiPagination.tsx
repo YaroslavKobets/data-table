@@ -37,8 +37,10 @@ export function UiPagination({
 	}
 
 	const handlePageInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const pageNumber = Number(e.target.value)
-		if (pageNumber > 0 && pageNumber <= totalPages) {
+		const value = e.target.value
+		const pageNumber = Number(value)
+
+		if (!isNaN(pageNumber) && pageNumber > 0 && pageNumber <= totalPages) {
 			onPageChange(pageNumber)
 		}
 	}
