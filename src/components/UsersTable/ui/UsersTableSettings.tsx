@@ -2,12 +2,7 @@ import clsx from 'clsx'
 import { useState, useRef } from 'react'
 import { UiTextField } from '../../UI'
 import { useClickOutside } from '../../../hooks'
-
-interface Column {
-	header: string
-	accessorKey: string[]
-	lock?: boolean
-}
+import { Column } from '../types'
 
 interface UsersTableSettingsProps {
 	className?: string
@@ -71,9 +66,10 @@ export function UsersTableSettings({
 								)
 								.map(column => {
 									const accessorString = column.accessorKey.join('.')
+
 									return (
 										<li
-											key={`${accessorString}-setting`}
+											key={accessorString}
 											className={
 												column.lock ? 'pointer-events-none opacity-50' : ''
 											}

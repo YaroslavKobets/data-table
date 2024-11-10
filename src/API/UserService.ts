@@ -1,6 +1,5 @@
 import axios from 'axios'
-import { UsersResponse } from '../types/userTypes'
-
+import { UsersResponse } from '../components/UsersTable/types'
 export default class UserService {
 	static async getAll(
 		page: number = 1,

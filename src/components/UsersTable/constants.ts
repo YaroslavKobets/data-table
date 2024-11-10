@@ -1,47 +1,22 @@
+import { Column } from './types'
+
 export const HEADERS = {
-	FULL_NAME: 'FULL_NAME',
-	BIRTHDAY: 'BIRTHDAY',
-	GENDER: 'GENDER',
-	EMAIL: 'EMAIL',
-	PHONE: 'PHONE',
-	USERNAME: 'USERNAME',
-	GENERAL_INFO: 'GENERAL_INFO',
+	FULL_NAME: 'Full Name',
+	BIRTHDAY: 'Birthday',
+	GENDER: 'Gender',
+	EMAIL: 'Email',
+	PHONE: 'Phone',
+	USERNAME: 'Username',
+	GENERAL_INFO: 'General info',
 	IP: 'IP',
-	MAC: 'MAC',
-	ADDRESS: 'ADDRESS',
-	BANK: 'BANK',
-	UNIVERSITY: 'UNIVERSITY',
-	COMPANY: 'COMPANY',
+	MAC_IP: 'Mac ip',
+	ADDRESS: 'Address',
+	BANK: 'Bank',
+	UNIVERSITY: 'University',
+	COMPANY: 'Company',
 	EIN: 'EIN',
 	SSN: 'SSN',
 } as const
-
-export const DISPLAY_HEADERS = {
-	[HEADERS.FULL_NAME]: 'Full Name',
-	[HEADERS.BIRTHDAY]: 'Birthday',
-	[HEADERS.GENDER]: 'Gender',
-	[HEADERS.EMAIL]: 'Email',
-	[HEADERS.PHONE]: 'Phone',
-	[HEADERS.USERNAME]: 'Username',
-	[HEADERS.GENERAL_INFO]: 'General Info',
-	[HEADERS.IP]: 'IP',
-	[HEADERS.MAC]: 'MAC',
-	[HEADERS.ADDRESS]: 'Address',
-	[HEADERS.BANK]: 'Bank',
-	[HEADERS.UNIVERSITY]: 'University',
-	[HEADERS.COMPANY]: 'Company',
-	[HEADERS.EIN]: 'EIN',
-	[HEADERS.SSN]: 'SSN',
-} as const
-
-export type HeaderType = keyof typeof HEADERS
-
-interface Column {
-	accessorKey: string[]
-	header: HeaderType
-	size: number
-	lock?: boolean
-}
 
 export const COLUMNS: Column[] = [
 	{
@@ -51,7 +26,7 @@ export const COLUMNS: Column[] = [
 		lock: true,
 	},
 	{
-		accessorKey: ['birthDate'],
+		accessorKey: ['birthDate', 'age'],
 		header: HEADERS.BIRTHDAY,
 		size: 170,
 	},
@@ -89,7 +64,7 @@ export const COLUMNS: Column[] = [
 	},
 	{
 		accessorKey: ['macAddress'],
-		header: HEADERS.MAC,
+		header: HEADERS.MAC_IP,
 		size: 112,
 	},
 	{
@@ -132,6 +107,6 @@ export const COLUMNS: Column[] = [
 export const ITEMS_PER_VIEW: number[] = [10, 20, 50]
 
 export const GENDER = {
-	MALE: 'male' as const,
-	FEMALE: 'female' as const,
-}
+	MALE: 'male',
+	FEMALE: 'female',
+} as const

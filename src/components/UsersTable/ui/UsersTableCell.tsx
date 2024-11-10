@@ -1,16 +1,11 @@
 import clsx from 'clsx'
 import { HEADERS } from '../constants'
 import { formatCellData } from '../model/formatCellData'
-import { User } from '../../../types/userTypes'
-
-interface ColumnData {
-	header: keyof typeof HEADERS
-	accessorKey: string[]
-}
+import { Column, User } from '../types'
 
 interface UsersTableCellProps {
 	userData: User
-	columnData: ColumnData
+	columnData: Column
 	index: number
 }
 

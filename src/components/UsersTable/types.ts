@@ -1,3 +1,14 @@
+import { HEADERS } from './constants'
+
+type HeaderValue = (typeof HEADERS)[keyof typeof HEADERS]
+
+export interface Column {
+	accessorKey: string[]
+	header: HeaderValue
+	size: number
+	lock?: boolean
+}
+
 export interface Hair {
 	color: string
 }
@@ -39,6 +50,7 @@ export interface User {
 	company: Company
 	ein: string
 	ssn: string
+	age: number
 }
 
 export interface UsersResponse {

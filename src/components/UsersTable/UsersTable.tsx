@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { UiInfoSigns, UiTextField } from '../UI'
-import { COLUMNS, ITEMS_PER_VIEW, HEADERS } from './constants'
+import { COLUMNS, ITEMS_PER_VIEW } from './constants'
 import {
 	UsersTableData,
 	UsersTableLayout,
@@ -10,7 +10,7 @@ import {
 import { useFetching } from '../../hooks/useFetching'
 import UserService from '../../API/UserService'
 import { useDebounce } from '../../hooks/useDebounce'
-import { User, UsersResponse } from '../../types/userTypes'
+import { User, UsersResponse } from './types'
 
 export function UsersTable() {
 	const [users, setUsers] = useState<User[]>([])
@@ -77,11 +77,9 @@ export function UsersTable() {
 		if (error) return <UiInfoSigns.Error />
 		return <UiInfoSigns.NotFound />
 	}
-
 	const columnsToDisplay = COLUMNS.filter(column =>
 		selectedColumns.includes(column.accessorKey.join('.'))
 	)
-
 	return (
 		<UsersTableLayout
 			search={

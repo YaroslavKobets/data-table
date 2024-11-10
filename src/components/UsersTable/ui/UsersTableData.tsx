@@ -1,16 +1,6 @@
 import clsx from 'clsx'
-
-import { User } from '../../../types/userTypes'
-import { HEADERS } from '../constants'
 import { UsersTableCell } from '.'
-
-type ValidHeaderKeys = keyof typeof HEADERS
-
-interface Column {
-	header: ValidHeaderKeys
-	accessorKey: string[]
-	lock?: boolean
-}
+import { Column, User } from '../types'
 
 interface UsersTableDataProps {
 	users: User[]

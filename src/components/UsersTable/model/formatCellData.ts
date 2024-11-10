@@ -1,4 +1,5 @@
 import { HEADERS, GENDER } from '../constants'
+import { Column, User } from '../types'
 import {
 	formatAddress,
 	formatBirthday,
@@ -8,26 +9,17 @@ import {
 	formatPhoneNumber,
 	GenderType,
 	getNestedValue,
+	NestedValue,
 } from './utils'
-import { User } from '../../../types/userTypes'
-
-interface DataType {
-	header: keyof typeof HEADERS
-	accessorKey: string[]
-}
-
 type FormattedData =
 	| string
 	| { label: string; icon: string }
 	| { image: string; fullName: string }
 
-export const formatCellData = (
-	data: User,
-	dataType: DataType
-): FormattedData => {
+export const formatCellData = (data: User, dataType: Column): FormattedData => {
 	const accessorKey = dataType.accessorKey
 
-	const value = getNestedValue(data, accessorKey)
+	const value = getNestedValue(data as NestedValue, accessorKey)
 
 	switch (dataType.header) {
 		case HEADERS.GENDER:
@@ -39,10 +31,7 @@ export const formatCellData = (
 			}
 			return 'N/A'
 		case HEADERS.BIRTHDAY:
-			if (typeof value === 'string') {
-				return formatBirthday(value)
-			}
-			return 'N/A'
+			return formatBirthday(data)
 		case HEADERS.PHONE:
 			if (typeof value === 'string') {
 				return formatPhoneNumber(value)
